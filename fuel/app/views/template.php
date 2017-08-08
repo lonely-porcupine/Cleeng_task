@@ -21,15 +21,19 @@
 		};
 		window.includeMarkerScript = (function() {
 			var script = document.createElement('script');
-			script.src = '<?=Uri::create("markers/get")?>';
+			script.src = '<?=Uri::create("markers.html")?>';
 			document.getElementsByTagName('head')[0].appendChild(script);
 		});
 	</script>
 	<?php echo Asset::css('tether.min.css'); ?>
+	<?php echo Asset::css('vex.css'); ?>
+	<?php echo Asset::css('vex-theme-wireframe.css'); ?>
 	<?php echo Asset::css('bootstrap.min.css'); ?>
 	<?php echo Asset::css('bootstrap-reboot.min.css'); ?>
 	<?php echo Asset::css('bootstrap-grid.min.css'); ?>
 	<?php echo Asset::js('tether.min.js'); ?>
+	<?php echo Asset::js('vex.combined.min.js'); ?>
+	<script>vex.defaultOptions.className = 'vex-theme-wireframe';</script>
 	<?php echo Asset::js('bootstrap.min.js'); ?>
 	<?php echo Asset::js('maps.js'); ?>
 	<?php echo Asset::css('custom.css'); ?>
@@ -39,6 +43,11 @@
 <body>
 	<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
 		<a class="navbar-brand" href="<?=Uri::base()?>">eOstrzegator</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item" id="simulationToggle">
+				<a class="nav-link" href="javascript:void(0)">Location simulation: <span>off</span></a>
+			</li>
+		</ul>
 	</nav>
 	<?php echo $content; ?>
 
