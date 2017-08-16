@@ -1,6 +1,7 @@
 window.simulationMode = false;
 window.map_center = {lat: 52.4064, lng: 16.9252};
 window.markers = [];
+window.firstFromGPS = true;
 window.addMarker = (function(feature) {
 	var marker = new google.maps.Marker({
 		position: feature.position,
@@ -27,7 +28,7 @@ window.initMap = (function() {
 window.getUserPositionFromGPS = (function() {
 	navigator.geolocation.getCurrentPosition(function(location) {
 	 	if(!window.simulationMode) {
-			window.setCurrentUserLocation(location.coords.latitude, location.coords.longitude, false);
+			window.setCurrentUserLocation(location.coords.latitude, location.coords.longitude, window.firstFromGPS);
 	 	}
 	});
 	setTimeout(function() { window.getUserPositionFromGPS() }, 1000);
@@ -70,7 +71,7 @@ window.setCurrentUserLocation = (function(lat, lng, moveMap) {
 			}
 		}
 	}
-
+	window.firstFromGPS = false;
 });
 
 window.onMapLoadedCallback = (function() {

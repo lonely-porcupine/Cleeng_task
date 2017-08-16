@@ -4,3 +4,8 @@
 	display: block;
     position: static !important;
 }
+
+body {
+    overflow: hidden;
+}
+

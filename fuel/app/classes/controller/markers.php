@@ -4,7 +4,7 @@ class Controller_Markers extends Controller_Rest
 {
 	public function action_get()
 	{
-		$markers = DummyMarkerGenerator::get();
+		$markers = \DummyMarkerGenerator::get();
 		$response = [];
 		foreach($markers as $marker) {
 			$response[] = ['position' => ['lat' => (double)$marker->lat, 'lng' => (double)$marker->lng], 'type' => $marker->type];
